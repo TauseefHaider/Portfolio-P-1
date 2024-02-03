@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body>
+    <div
+      class="bg-[#404040] w-full h-lvh flex justify-center items-center font-Source Sans Pro, sans-serif"
+    >
+      <div
+        class="h-[550px] md:h-[650px] md:w-[700px] lg:w-[1000px] grid grid-cols-2 rounded-xl shadow-xl"
+      >
+        <div
+          class="bg-[#fffde7] md:col-span-1 md:flex flex-col rounded-l-xl shadow-xl hidden"
+        >
+          <div class="h-[250px] flex flex-col justify-center">
+            <p class="mt-28 ml-12 text-2xl italic">Calculate Smarter,</p>
+            <p class="ml-12 text-2xl italic">Spend Wiser...</p>
+          </div>
+          <div>
+            <img src="assets/singup.png" alt="" />
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-8 col-span-2 md:col-span-1 justify-center bg-[#2b2b2b] rounded-xl md:rounded-r-xl md:rounded-none shadow-xl"
+        >
+          <p
+            class="text-slate-100 text-2xl text-center mb-2 md:mb-10 font-bold"
+          >
+            EXPENSE <span class="text-[#51d289] ml-1">BOOK</span>
+          </p>
+          <input
+            type="text"
+            id="name-signup-input"
+            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+            placeholder="Your Name"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="email"
+            id="email-signup-input"
+            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+            placeholder="you@example.com"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="password"
+            id="pass-signup-input"
+            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+            placeholder="Password"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="password"
+            id="con-pass-signup-input"
+            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+            placeholder="Conform Password"
+            autocomplete="off"
+            required
+          />
+
+          <button
+            id="signup-btn"
+            class="text-[#2b2b2b] bg-[#ffe600] w-[220px] p-1.5 mt-6 items-center self-center rounded-md"
+          >
+            Register
+          </button>
+          <a class="self-center text-slate-100" href="login.html">Log In</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const $singupname = document.getElementById("name-signup-input"),
+        $signupemail = document.getElementById("email-signup-input"),
+        $signuppassword = document.getElementById("pass-signup-input"),
+        $signupconfrimpass = document.getElementById("con-pass-signup-input"),
+        $signupbtn = document.getElementById("signup-btn");
+      let users = [];
+      const localstorage = localStorage.getItem("users");
+
+      if (localstorage) {
+        users = JSON.parse(localstorage);
+      }
+
+      function useremail(email) {
+        return users.some((user) => user.email === email);
+      }
+
+      function singupSubmitClick() {
+        const name = $singupname.value;
+        const email = $signupemail.value;
+        const password = $signuppassword.value;
+        const confirmpass = $signupconfrimpass.value;
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+        } else if (
+          name === "" ||
+          email === "" ||
+          password === "" ||
+          confirmpass === ""
+        ) {
+          alert("All fields must be filled out");
+        } else if (password !== confirmpass) {
+          alert("Password Should Be Same");
+        } else if (useremail(email)) {
+          alert("Email already exists");
+        } else {
+          const newuser = {
+            name,
+            email,
+            password,
+            createdat: new Date().getTime(),
+          };
+
+          users.push(newuser);
+          localStorage.setItem("users", JSON.stringify(users));
+
+          location.replace("./login.html");
+        }
+      }
+
+      $signupbtn.addEventListener("click", singupSubmitClick);
+    </script>
+  </body>
+</html>

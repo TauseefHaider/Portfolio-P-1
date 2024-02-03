@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setting</title>
+    <link rel="stylesheet" href="output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body class="bg-[#2b2b2b] font-Source Sans Pro, sans-serif text-slate-100">
+    <header class="bg-[#2b2b2b] sticky top-0 md:h-[110px]">
+      <div
+        class="text-slate-100 p-3 md:p-6 lg:px-20 bg-[#2b2b2b] flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <div id="toggle" class="md:hidden cursor-pointer">
+            <span class="material-symbols-outlined"> menu </span>
+          </div>
+          <div>
+            <p class="md:text-lg lg:text-2xl font-bold">
+              EXPENSE <span class="text-[#51d289] ml-1">BOOK</span>
+            </p>
+            <p class="text-xs">Track, save, conquer.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-center">
+          <img class="w-8 rounded-full" src="assets/profile pic.png" alt="" />
+          <div>
+            <p id="dash-name" class="md:text-lg">Your Name</p>
+          </div>
+        </div>
+      </div>
+      <hr class="mx-5 pb-4" />
+    </header>
+    <div class="w-full flex h-[calc(100vh-110px)]">
+      <aside
+        class="md:flex md:flex-col pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 sticky top-[110px]"
+      >
+        <div class="flex flex-col gap-7">
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> dashboard </span>
+            <a href="home.html">Dashboard</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> savings </span>
+
+            <a href="income.html">Income</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> payments </span>
+            <a href="expense.html">Expenses</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> calculate </span>
+            <a href="calculater.html">Calculater</a>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> settings </span>
+            <a id="logout-1" href="setting.html">Setting</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> logout </span>
+            <a id="logout-1" href="">Logout</a>
+          </div>
+        </div>
+      </aside>
+      <aside
+        id="mob-sidebar"
+        class="pl-5 flex-col hidden h-[calc(100vh-110px)] justify-between md:hidden bg-[#2b2b2b] w-[200px] absolute text-slate-100 text-base font-bold py-10 gap-8"
+      >
+        <div class="flex flex-col gap-7">
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> dashboard </span>
+            <a href="home.html">Dashboard</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> savings </span>
+
+            <a href="income.html">Income</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> payments </span>
+            <a href="expense.html">Expenses</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> calculate </span>
+            <a href="calculater.html">Calculater</a>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> settings </span>
+            <a id="logout-1" href="setting.html">Setting</a>
+          </div>
+          <div
+            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> logout </span>
+            <a id="logout-1" href="">Logout</a>
+          </div>
+        </div>
+      </aside>
+
+      <section
+        class="bg-[#404040] w-full md:rounded-l-lg md:w-[calc(100%-200px)] grid-cols-2"
+      ></section>
+    </div>
+    <!-- Javascript -->
+    <script src="script.js"></script>
+  </body>
+</html>
