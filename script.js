@@ -74,6 +74,8 @@ if ($expenseBtn) {
   });
 }
 
+// Auth Func
+
 function checkAuth() {
   if (!activeuser) {
     location.assign("./login.html");
@@ -82,3 +84,45 @@ function checkAuth() {
     currentUser = users.find((user) => user.email === activeuser);
   }
 }
+
+// input data
+
+const $txtincomeInpute = document.getElementById("txtincome-input");
+const $incomeSelect = document.getElementById("selectValue-income");
+const $incomeDate = document.getElementById("income-date-input");
+const $saveIncome = document.getElementById("save-income");
+const $txtexpenseInpute = document.getElementById("txtexpense-input");
+const $expenseSelect = document.getElementById("selectValue-expense");
+const $expenseDate = document.getElementById("expense-date-input");
+const $saveExpense = document.getElementById("save-expense");
+let incomeData = [];
+
+function handleSubmitIncome() {
+  const income = $txtincomeInpute.value;
+  const source = $incomeSelect.value;
+  const incomeDate = $incomeDate.value;
+
+  const userIncome = {
+    income,
+    source,
+    incomeDate,
+  };
+  if (currentUser?.incomeData) {
+    currentUser.incomeData.push(userIncome);
+    const userIndex = users.findIndex(
+      (user) => user.email === currentUser.email
+    );
+    users.splice(userIndex, 1, currentUser);
+    localStorage.setItem("user", JSON.stringify(users));
+  } else {
+    localStorage.setItem("currentUser", incomeData);
+    currentUser.incomeData = [userIncome];
+    const userIndex = users.findIndex(
+      (user) => user.email === currentUser.email
+    );
+    users.splice(userIndex, 1, currentUser);
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+}
+
+$saveIncome.addEventListener("click", handleSubmitIncome);
