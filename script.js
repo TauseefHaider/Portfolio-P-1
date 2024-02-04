@@ -2,8 +2,9 @@ let $toggle = document.getElementById("toggle");
 let $sidebar = document.getElementById("mob-sidebar");
 const activeuser = localStorage.getItem("activeuser");
 let users = [];
+let currentUser;
 
-const currentUser = localStorage.getItem("currentUser");
+const currentUsers = localStorage.getItem("currentUsers");
 
 // check Auth func
 
@@ -110,8 +111,6 @@ function handleSubmitIncome() {
   const income = $txtincomeInpute.value;
   const source = $incomeSelect.value;
   const incomeDate = $incomeDate.value;
-
-  const name = "abc";
 
   const userIncome = {
     income,
