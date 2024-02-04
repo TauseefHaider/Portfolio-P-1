@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <title>Local Storage Example</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Data Input Form</h2>
+
+    <form id="dataForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <button type="button" onclick="saveData()">Save Data</button>
+    </form>
+
+    <h2>Saved Data</h2>
+
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      function saveData() {
+        // Get data from input fields
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const email = document.getElementById("email").value;
+
+        // Create an object with the data
+        const userData = {
+          name: name,
+          age: age,
+          email: email,
+        };
+
+        // Retrieve existing data from local storage or initialize an empty array
+        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        // Add new data to the array
+        existingData.push(userData);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("userData", JSON.stringify(existingData));
+
+        // Display the data in the table
+        displayData();
+      }
+
+      function displayData() {
+        // Retrieve data from local storage
+        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        // Get the table body
+        const tableBody = document.querySelector("#dataTable tbody");
+
+        // Clear existing rows
+        tableBody.innerHTML = "";
+
+        // Loop through the data and append rows to the table
+        userData.forEach((user) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+
+          cell1.textContent = user.name;
+          cell2.textContent = user.age;
+          cell3.textContent = user.email;
+        });
+      }
+
+      // Display existing data on page load
+      displayData();
+    </script>
+  </body>
+</html>

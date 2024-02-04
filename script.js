@@ -50,7 +50,7 @@ let progress = setInterval(() => {
 const $username = document.getElementById("user-name");
 
 const profile = JSON.parse(localStorage.getItem("users"));
-console.log(profile);
+
 $username.textContent = profile[0].name;
 
 // Income Expense btn
@@ -95,44 +95,152 @@ function checkAuth() {
   }
 }
 
-// input data
+// income input data
 
 const $txtincomeInpute = document.getElementById("txtincome-input");
 const $incomeSelect = document.getElementById("selectValue-income");
 const $incomeDate = document.getElementById("income-date-input");
 const $saveIncome = document.getElementById("save-income");
+
+let incomeData = [];
+
+function handleSubmitIncome() {
+  const money = $txtincomeInpute.value;
+  const source = $incomeSelect.value;
+  const date = $incomeDate.value;
+
+  if (!money) {
+    alert("Put Your Income");
+    return;
+  }
+  if (!date) {
+    alert("Add Date");
+    return;
+  }
+
+  const userData = {
+    money,
+    source,
+    date,
+    type: "Income",
+    delete: "Delete",
+  };
+
+  const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+
+  existingData.push(userData);
+
+  localStorage.setItem("userData", JSON.stringify(existingData));
+
+  displayData();
+  cleanupSlate();
+}
+
+// displaying data in table
+
+function displayData() {
+  const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+  const tableBody = document.querySelector("#dataTable tbody");
+
+  tableBody.innerHTML = "";
+
+  userData.forEach((user) => {
+    const row = tableBody.insertRow();
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    const cell3 = row.insertCell(2);
+    const cell4 = row.insertCell(3);
+    const cell5 = row.insertCell(4);
+
+    cell1.textContent = user.type;
+    cell2.textContent = user.money;
+    cell3.textContent = user.source;
+    cell4.textContent = user.date;
+    cell5.textContent = user.delete;
+  });
+}
+
+function cleanupSlate() {
+  $txtincomeInpute.value = "";
+  $incomeSelect.value = "Not Categorized";
+  $incomeDate.value = "";
+}
+
+displayData();
+
+$saveIncome.addEventListener("click", handleSubmitIncome);
+
+// Expense Input
 const $txtexpenseInpute = document.getElementById("txtexpense-input");
 const $expenseSelect = document.getElementById("selectValue-expense");
 const $expenseDate = document.getElementById("expense-date-input");
 const $saveExpense = document.getElementById("save-expense");
-let incomeData = [];
 
-function handleSubmitIncome() {
-  const income = $txtincomeInpute.value;
-  const source = $incomeSelect.value;
-  const incomeDate = $incomeDate.value;
+function handleSubmitExpense() {
+  const money = $txtexpenseInpute.value;
+  const source = $expenseSelect.value;
+  const date = $expenseDate.value;
 
-  const userIncome = {
-    income,
-    source,
-    incomeDate,
-  };
-  if (currentUser?.incomeData) {
-    currentUser.incomeData.push(userIncome);
-    const userIndex = users.findIndex(
-      (user) => user.email === currentUser.email
-    );
-    users.splice(userIndex, 1, currentUser);
-    localStorage.setItem("user", JSON.stringify(users));
-  } else {
-    localStorage.setItem("currentUser", incomeData);
-    currentUser.incomeData = [userIncome];
-    const userIndex = users.findIndex(
-      (user) => user.email === currentUser.email
-    );
-    users.splice(userIndex, 1, currentUser);
-    localStorage.setItem("users", JSON.stringify(users));
+  if (!money) {
+    alert("Put Your Expense");
+    return;
   }
+  if (!date) {
+    alert("Add Date");
+    return;
+  }
+
+  const userData = {
+    money,
+    source,
+    date,
+    type: "Expense",
+    delete: "Delete",
+  };
+
+  const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+
+  existingData.push(userData);
+
+  localStorage.setItem("userData", JSON.stringify(existingData));
+
+  displayDataEx();
+  cleanupSlateEx();
 }
 
-$saveIncome.addEventListener("click", handleSubmitIncome);
+// displaying data in table
+
+function displayDataEx() {
+  const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+  const tableBody = document.querySelector("#dataTable tbody");
+
+  tableBody.innerHTML = "";
+
+  userData.forEach((user) => {
+    const row = tableBody.insertRow();
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    const cell3 = row.insertCell(2);
+    const cell4 = row.insertCell(3);
+    const cell5 = row.insertCell(4);
+
+    cell1.textContent = user.type;
+    cell2.textContent = user.money;
+    cell3.textContent = user.source;
+    cell4.textContent = user.date;
+    cell5.textContent = user.delete;
+  });
+}
+
+function cleanupSlateEx() {
+  $txtexpenseInpute.value = "";
+  $expenseSelect.value = "Not Categorized";
+  $expenseDate.value = "";
+}
+
+displayData();
+displayDataEx();
+
+$saveExpense.addEventListener("click", handleSubmitExpense);
