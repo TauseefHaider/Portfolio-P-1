@@ -29,7 +29,7 @@
         <div class="flex gap-4 items-center">
           <img class="w-8 rounded-full" src="assets/profile pic.png" alt="" />
           <div>
-            <p id="dash-name" class="md:text-lg">Your Name</p>
+            <p id="user-name" class="md:text-lg">Your Name</p>
           </div>
         </div>
       </div>
@@ -178,13 +178,13 @@
             <div class="flex w-full bg-gray-200 rounded-md mt-5">
               <button
                 id="income-btn"
-                class="flex-col-1 w-full rounded-l-md border-r-black hover:bg-gray-500"
+                class="flex-col-1 w-full rounded-l-md border-r-black hover:bg-gray-500 py-2 hover:text-slate-200"
               >
                 Income
               </button>
               <button
                 id="expense-btn"
-                class="flex-span-1 w-full rounded-r-md border-l-2 border-l-black hover:bg-gray-500"
+                class="flex-span-1 w-full rounded-r-md border-l-2 border-l-black hover:bg-gray-500 py-2 hover:text-slate-200"
               >
                 Expense
               </button>
@@ -229,7 +229,7 @@
 
                   <button
                     id="save-income"
-                    class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#2c714a]"
+                    class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
                   >
                     Save
                   </button>
@@ -275,7 +275,7 @@
 
                   <button
                     id="save-expense"
-                    class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#2c714a]"
+                    class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
                   >
                     Save
                   </button>
@@ -290,6 +290,7 @@
             <thead>
               <tr>
                 <th class="border p-2.5">Type</th>
+                <th class="border p-2.5">Amount</th>
                 <th class="border p-2.5">Category</th>
                 <th class="border p-2.5">Date</th>
                 <th class="border p-2.5">Edit</th>

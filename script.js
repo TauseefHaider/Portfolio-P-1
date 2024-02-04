@@ -2,7 +2,8 @@ let $toggle = document.getElementById("toggle");
 let $sidebar = document.getElementById("mob-sidebar");
 const activeuser = localStorage.getItem("activeuser");
 let users = [];
-let currentUser;
+
+const currentUser = localStorage.getItem("currentUser");
 
 // check Auth func
 
@@ -42,6 +43,14 @@ let progress = setInterval(() => {
     clearInterval(progress);
   }
 }, speed);
+
+// UserName Show on Head
+
+const $username = document.getElementById("user-name");
+
+const profile = JSON.parse(localStorage.getItem("users"));
+console.log(profile);
+$username.textContent = profile[0].name;
 
 // Income Expense btn
 
@@ -101,6 +110,8 @@ function handleSubmitIncome() {
   const income = $txtincomeInpute.value;
   const source = $incomeSelect.value;
   const incomeDate = $incomeDate.value;
+
+  const name = "abc";
 
   const userIncome = {
     income,

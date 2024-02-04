@@ -83,6 +83,13 @@
         $signupbtn = document.getElementById("signup-btn");
       let users = [];
       const localstorage = localStorage.getItem("users");
+      const abc = localStorage.getItem("users123");
+
+      console.log(abc);
+
+      if (!1) {
+        console.log("abc");
+      }
 
       if (localstorage) {
         users = JSON.parse(localstorage);
@@ -118,7 +125,7 @@
             name,
             email,
             password,
-            createdat: new Date().getTime(),
+            createdate: new Date().getTime(),
           };
 
           users.push(newuser);
