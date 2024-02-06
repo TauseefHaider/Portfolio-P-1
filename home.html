@@ -67,40 +67,40 @@
       >
         <div class="flex flex-col gap-7">
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
             <a href="home.html">Dashboard</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
             <a href="income.html">Income</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
             <a href="expense.html">Expenses</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="calculater.html">Calculater</a>
+            <a href="categories.html">Categories</a>
           </div>
         </div>
         <div class="flex flex-col gap-5">
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
             <a id="logout-1" href="setting.html">Setting</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
             <a id="logout-1" href="">Logout</a>
@@ -114,40 +114,40 @@
       >
         <div class="flex flex-col gap-7">
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
             <a href="home.html">Dashboard</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
             <a href="income.html">Income</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
             <a href="expense.html">Expenses</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="calculater.html">Calculater</a>
+            <a href="categories.html">Categories</a>
           </div>
         </div>
         <div class="flex flex-col gap-5">
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
             <a id="logout-1" href="setting.html">Setting</a>
           </div>
           <div
-            class="flex gap-3 items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
             <a id="logout-1" href="">Logout</a>
@@ -333,5 +333,148 @@
 
     <!-- Javascript -->
     <script src="script.js"></script>
+    <script>
+      const $txtincomeInpute = document.getElementById("txtincome-input");
+      const $incomeSelect = document.getElementById("selectValue-income");
+      const $incomeDate = document.getElementById("income-date-input");
+      const $saveIncome = document.getElementById("save-income");
+
+      function handleSubmitIncome1() {
+        const money = $txtincomeInpute.value;
+        const source = $incomeSelect.value;
+        const date = $incomeDate.value;
+
+        if (!money) {
+          alert("Put Your Income");
+          return;
+        }
+        if (!date) {
+          alert("Add Date");
+          return;
+        }
+
+        const userData = {
+          money,
+          source,
+          date,
+          type: "Income",
+          delete: "Delete",
+        };
+
+        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        existingData.push(userData);
+
+        localStorage.setItem("userData", JSON.stringify(existingData));
+
+        displayData();
+        cleanupSlate();
+      }
+
+      function displayData() {
+        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        const tableBody = document.querySelector("#dataTable tbody");
+
+        tableBody.innerHTML = "";
+
+        userData.forEach((user) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+          const cell4 = row.insertCell(3);
+          const cell5 = row.insertCell(4);
+
+          cell1.textContent = user.type;
+          cell2.textContent = user.money;
+          cell3.textContent = user.source;
+          cell4.textContent = user.date;
+          cell5.textContent = user.delete;
+        });
+      }
+
+      function cleanupSlate() {
+        $txtincomeInpute.value = "";
+        $incomeSelect.value = "Not Categorized";
+        $incomeDate.value = "";
+      }
+
+      $saveIncome.addEventListener("click", handleSubmitIncome1);
+
+      // Expense Input
+      const $txtexpenseInpute = document.getElementById("txtexpense-input");
+      const $expenseSelect = document.getElementById("selectValue-expense");
+      const $expenseDate = document.getElementById("expense-date-input");
+      const $saveExpense = document.getElementById("save-expense");
+
+      function handleSubmitExpense() {
+        const money = $txtexpenseInpute.value;
+        const source = $expenseSelect.value;
+        const date = $expenseDate.value;
+
+        if (!money) {
+          alert("Put Your Expense");
+          return;
+        }
+        if (!date) {
+          alert("Add Date");
+          return;
+        }
+
+        const userData = {
+          money,
+          source,
+          date,
+          type: "Expense",
+          delete: "Delete",
+        };
+
+        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        existingData.push(userData);
+
+        localStorage.setItem("userData", JSON.stringify(existingData));
+
+        displayDataEx();
+        cleanupSlateEx();
+      }
+
+      // displaying data in table Expense
+
+      function displayDataEx() {
+        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+        const tableBody = document.querySelector("#dataTable tbody");
+
+        tableBody.innerHTML = "";
+
+        userData.forEach((user) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+          const cell4 = row.insertCell(3);
+          const cell5 = row.insertCell(4);
+
+          cell1.textContent = user.type;
+          cell2.textContent = user.money;
+          cell3.textContent = user.source;
+          cell4.textContent = user.date;
+          cell5.textContent = user.delete;
+        });
+      }
+
+      function cleanupSlateEx() {
+        $txtexpenseInpute.value = "";
+        $expenseSelect.value = "Not Categorized";
+        $expenseDate.value = "";
+      }
+
+      $saveExpense.addEventListener("click", handleSubmitExpense);
+
+      displayData();
+      displayDataEx();
+    </script>
   </body>
 </html>
