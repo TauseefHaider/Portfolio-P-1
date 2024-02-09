@@ -97,10 +97,9 @@ function checkAuth() {
 
 // income input data
 
-if (document.getElementById("selectValue-income")) {
+var selectElement = document.getElementById("selectValue-income");
+if (selectElement) {
   function populateSelect() {
-    var selectElement = document.getElementById("selectValue-income");
-
     // Retrieve categories from localStorage
     var income = JSON.parse(localStorage.getItem("income")) || [];
 
@@ -114,11 +113,9 @@ if (document.getElementById("selectValue-income")) {
   }
 }
 // Initial population of the select dropdown
-
-if (document.getElementById("selectValue-expense")) {
+var selectElement2 = document.getElementById("selectValue-expense");
+if (selectElement2) {
   function populateSelect1() {
-    var selectElement = document.getElementById("selectValue-expense");
-
     // Retrieve categories from localStorage
     var expense = JSON.parse(localStorage.getItem("expense")) || [];
 
@@ -127,7 +124,7 @@ if (document.getElementById("selectValue-expense")) {
       var option = document.createElement("option");
       option.value = category;
       option.text = category;
-      selectElement.add(option);
+      selectElement2.add(option);
     });
   }
 }
