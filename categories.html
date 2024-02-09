@@ -78,7 +78,7 @@
             class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="">Logout</a>
+            <a id="logout-1" href="" onclick="logout()">Logout</a>
           </div>
         </div>
       </aside>
@@ -125,16 +125,291 @@
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="">Logout</a>
+            <a id="logout-1" href="" onclick="logout()">Logout</a>
           </div>
         </div>
       </aside>
       <section
-        class="flex flex-col md:ml-[200px] items-center w-full gap-14"
-      ></section>
+        class="flex flex-col lg:flex-row md:ml-[200px] items-center w-full"
+      >
+        <div
+          class="ml-4 m-4 lg:m-14 flex flex-col justify-center items-center bg-slate-300 text-black p-6 rounded-md"
+        >
+          <div class="flex items-center gap-4">
+            <p>Add Income Category:</p>
+            <input
+              type="text"
+              id="income-category"
+              class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+              placeholder=""
+              required
+            />
+          </div>
+          <button
+            id="add-income-category"
+            onclick="addCustomCategory()"
+            class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
+          >
+            Add
+          </button>
+          <div>
+            <table
+              id="income-category-table"
+              class="table-auto text-center text-xl mt-6"
+            >
+              <th>Income Categories</th>
+              <tbody>
+                <tr>
+                  <td>Salary</td>
+                </tr>
+                <tr>
+                  <td>Bonus</td>
+                </tr>
+                <tr>
+                  <td>Commission</td>
+                </tr>
+                <tr>
+                  <td>Gift</td>
+                </tr>
+                <tr>
+                  <td>Others</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="ml-4 m-4 flex flex-col justify-center items-center bg-slate-300 text-black p-6 rounded-md"
+        >
+          <div class="flex items-center gap-4">
+            <p>Add Expense Category:</p>
+            <input
+              type="text"
+              id="expense-category"
+              class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+              placeholder=""
+              required
+            />
+          </div>
+          <button
+            id="add-expense-category"
+            onclick="addCustomCategory1()"
+            class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
+          >
+            Add
+          </button>
+          <div>
+            <table
+              id="expense-category-table"
+              class="table-auto text-center text-xl mt-6"
+            >
+              <th>Expense Categories</th>
+              <tbody>
+                <tr>
+                  <td>Shopping</td>
+                </tr>
+                <tr>
+                  <td>Utility</td>
+                </tr>
+                <tr>
+                  <td>Food</td>
+                </tr>
+                <tr>
+                  <td>Petrol</td>
+                </tr>
+                <tr>
+                  <td>Others</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- <div class="mt-20 flex flex-col gap-6">
+          <select
+            id="options"
+            onchange="showDiv()"
+            name="selectValue"
+            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
+          >
+            <option value="Option1">Income</option>
+            <option value="Option2">Expenses</option>
+          </select>
+          <div id="divOption1" style="display: block">
+            <select
+              id="selectValue-income"
+              name="selectValue"
+              class="border-2 border-gray-300 rounded-md md:w-[400px] text-black w-[200px] p-2.5 focus:border-2 focus:border-black text-center"
+            >
+              <option>Salary</option>
+              <option>Bonus</option>
+              <option>Commission</option>
+              <option>Gift</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div id="divOption2" style="display: none">
+            <select
+              id="selectValue-expense"
+              name="selectValue"
+              class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
+            >
+              <option>Shopping</option>
+              <option>Utility</option>
+              <option>Food</option>
+              <option>Petrol</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="p-2 bg-[#2b2b2b] rounded-md mb-10 md:w-[400px] lg:w-[700px]"
+        >
+          <table id="dataTableIncome" class="table-auto border-collapse border">
+            <thead>
+              <tr>
+                <th class="border p-1">Type</th>
+                <th class="border p-1">Amount</th>
+                <th class="border p-1">Category</th>
+                <th class="border p-1">Date</th>
+
+                <th class="border p-1">Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div> -->
+      </section>
     </div>
 
     <!-- Javascript -->
     <script src="script.js"></script>
+    <script>
+      function addCustomCategory() {
+        const incomeCategoryInput = document.getElementById("income-category");
+        var newIncome = incomeCategoryInput.value.trim();
+
+        if (newIncome !== "") {
+          // Retrieve existing categories from localStorage
+          var income = JSON.parse(localStorage.getItem("income")) || [];
+
+          // Add the new category
+          income.push(newIncome);
+
+          // Save the updated categories back to localStorage
+          localStorage.setItem("income", JSON.stringify(income));
+
+          // Repopulate the select dropdown
+
+          // Clear the input field
+          incomeCategoryInput.value = "";
+          displayincomecategory();
+          populateSelect();
+        }
+      }
+
+      // displaying data in table Expense
+
+      function displayincomecategory() {
+        const income = JSON.parse(localStorage.getItem("income")) || [];
+
+        const tableBody = document.querySelector(
+          "#income-category-table tbody"
+        );
+
+        tableBody.innerHTML = "";
+
+        income.forEach((category) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+
+          cell1.textContent = category;
+        });
+      }
+
+      displayincomecategory();
+
+      function addCustomCategory1() {
+        const expenseCategoryInput =
+          document.getElementById("expense-category");
+        var newExpense = expenseCategoryInput.value.trim();
+
+        if (newExpense !== "") {
+          // Retrieve existing categories from localStorage
+          var expense = JSON.parse(localStorage.getItem("expense")) || [];
+
+          // Add the new category
+          expense.push(newExpense);
+
+          // Save the updated categories back to localStorage
+          localStorage.setItem("expense", JSON.stringify(expense));
+
+          // Repopulate the select dropdown
+
+          // Clear the input field
+          expenseCategoryInput.value = "";
+          displayexpensecategory();
+          populateSelect();
+        }
+      }
+
+      function displayexpensecategory() {
+        const expense = JSON.parse(localStorage.getItem("expense")) || [];
+
+        const tableBody = document.querySelector(
+          "#expense-category-table tbody"
+        );
+
+        tableBody.innerHTML = "";
+
+        expense.forEach((category) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+
+          cell1.textContent = category;
+        });
+      }
+      displayexpensecategory();
+
+      // function showDiv() {
+      //   var selectedOption = document.getElementById("options").value;
+
+      //   // Hide all divs
+      //   document.getElementById("divOption1").style.display = "none";
+      //   document.getElementById("divOption2").style.display = "none";
+
+      //   // Show the selected div
+      //   document.getElementById("div" + selectedOption).style.display = "block";
+      // }
+
+      // const $ex = document.getElementById("secetValue-Expense");
+
+      // function displayDataIncome() {
+      //   const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+      //   const tableBody = document.querySelector("#dataTableIncome tbody");
+
+      //   tableBody.innerHTML = "";
+
+      //   userData.forEach((user) => {
+      //     if (user.source === $ex.textContent) {
+      //       const row = tableBody.insertRow();
+      //       const cell1 = row.insertCell(0);
+      //       const cell2 = row.insertCell(1);
+      //       const cell3 = row.insertCell(2);
+      //       const cell4 = row.insertCell(3);
+      //       const cell5 = row.insertCell(4);
+
+      //       cell1.textContent = user.type;
+      //       cell2.textContent = user.money;
+      //       cell3.textContent = user.source;
+      //       cell4.textContent = user.date;
+      //       cell5.textContent = user.delete;
+      //     }
+      //   });
+      // }
+
+      // displayDataIncome();
+    </script>
   </body>
 </html>

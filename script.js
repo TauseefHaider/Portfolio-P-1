@@ -96,3 +96,43 @@ function checkAuth() {
 }
 
 // income input data
+
+if (document.getElementById("selectValue-income")) {
+  function populateSelect() {
+    var selectElement = document.getElementById("selectValue-income");
+
+    // Retrieve categories from localStorage
+    var income = JSON.parse(localStorage.getItem("income")) || [];
+
+    // Populate select options
+    income.forEach(function (category) {
+      var option = document.createElement("option");
+      option.value = category;
+      option.text = category;
+      selectElement.add(option);
+    });
+  }
+}
+// Initial population of the select dropdown
+
+if (document.getElementById("selectValue-expense")) {
+  function populateSelect1() {
+    var selectElement = document.getElementById("selectValue-expense");
+
+    // Retrieve categories from localStorage
+    var expense = JSON.parse(localStorage.getItem("expense")) || [];
+
+    // Populate select options
+    expense.forEach(function (category) {
+      var option = document.createElement("option");
+      option.value = category;
+      option.text = category;
+      selectElement.add(option);
+    });
+  }
+}
+
+function logout() {
+  // Clear the relevant data from local storage
+  localStorage.removeItem("activeuser");
+}

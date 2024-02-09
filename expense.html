@@ -33,7 +33,9 @@
       }
     </style>
   </head>
-  <body class="bg-[#404040] font-Source Sans Pro, sans-serif text-slate-100">
+  <body
+    class="bg-[#404040] font-Source Sans Pro, sans-serif w-full text-slate-100"
+  >
     <header class="bg-[#2b2b2b] sticky top-0 md:h-[110px]">
       <div
         class="text-slate-100 p-3 md:p-6 lg:px-20 bg-[#2b2b2b] flex justify-between items-center"
@@ -58,7 +60,7 @@
       </div>
       <hr class="mx-5 pb-4" />
     </header>
-    <div class="w-full flex h-[calc(100%-110px)] bg-[#404040]">
+    <div class="w-full flex h-[calc(100%-110px)]">
       <!-- sidebar -->
       <aside
         class="md:flex md:flex-col h-[calc(100vh-110px)] pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 fixed top-[110px]"
@@ -101,7 +103,7 @@
             class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="">Logout</a>
+            <a id="logout-1" href="" onclick="logout()">Logout</a>
           </div>
         </div>
       </aside>
@@ -148,11 +150,11 @@
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="">Logout</a>
+            <a id="logout-1" href="" onclick="logout()">Logout</a>
           </div>
         </div>
       </aside>
-      <section class="flex flex-col md:ml-[200px] items-center w-full gap-14">
+      <section class="flex flex-col md:ml-[100px] items-center w-full gap-14">
         <div class="flex flex-col mt-10 ml-3 mr-2 gap-7">
           <p class="self-center text-xl md:text-2xl font-bold">Expense</p>
           <input
@@ -167,7 +169,6 @@
             name="selectValue"
             class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
           >
-            <option>Not Categorized</option>
             <option>Shopping</option>
             <option>Utility</option>
             <option>Food</option>
@@ -190,7 +191,9 @@
             Save
           </button>
         </div>
-        <div class="p-2 bg-[#2b2b2b] rounded-md mb-10 w-[80%]">
+        <div
+          class="p-2 bg-[#2b2b2b] rounded-md md:w-[400px] lg:w-[700px] mb-10"
+        >
           <table
             id="dataTableExpense"
             class="table-auto border-collapse border"
@@ -288,6 +291,7 @@
       }
 
       displayDataExpense1();
+      populateSelect1();
     </script>
   </body>
 </html>

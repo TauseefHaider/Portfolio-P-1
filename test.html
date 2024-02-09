@@ -3,150 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Data Tables</title>
-    <link rel="stylesheet" href="output.css" />
+    <title>Show Values from Input in Table</title>
   </head>
   <body>
-    <h2>Enter User Data</h2>
+    <label for="inputCategory">Add Category:</label>
+    <input type="text" id="inputCategory" />
+    <button onclick="addCategory()">Add to Table</button>
 
-    <form id="userDataForm">
-      <label for="userId">ID:</label>
-      <input type="text" id="userId" required />
-
-      <label for="userName">Name:</label>
-      <input type="text" id="userName" required />
-
-      <label for="userCondition">Condition:</label>
-      <input type="text" id="userCondition" required />
-
-      <button type="button" onclick="addUserData()">Add User Data</button>
-    </form>
-
-    <h2>All User Data Table</h2>
+    <br />
 
     <table border="1">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Condition</th>
+          <th>Category</th>
         </tr>
       </thead>
-      <tbody id="allTableBody"></tbody>
-    </table>
-
-    <h2>Conditional User Data Table</h2>
-
-    <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Condition</th>
-        </tr>
-      </thead>
-      <tbody id="conditionalTableBody"></tbody>
+      <tbody id="tableBody"></tbody>
     </table>
 
     <script>
-      // Function to add user data to local storage
-      function addUserData() {
-        const userId = document.getElementById("userId").value;
-        const userName = document.getElementById("userName").value;
-        const userCondition = document.getElementById("userCondition").value;
+      // Function to display values from local storage in a table
+      function displayValuesInTable() {
+        var tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
 
-        // Retrieve existing data from local storage or create an empty array
-        const dataArray = JSON.parse(localStorage.getItem("userData")) || [];
+        // Retrieve values from local storage
+        var categories =
+          JSON.parse(localStorage.getItem("customCategories")) || [];
 
-        // Add new user data to the array
-        dataArray.push({
-          id: userId,
-          name: userName,
-          condition: userCondition,
-        });
-
-        // Store the updated array back in local storage
-        localStorage.setItem("userData", JSON.stringify(dataArray));
-
-        // Refresh both tables to display the updated data
-        populateAllTable();
-        populateConditionalTable();
-      }
-
-      // Function to populate the table with all data
-      function populateAllTable() {
-        const allTableBody = document.getElementById("allTableBody");
-        const dataArray = JSON.parse(localStorage.getItem("userData")) || [];
-
-        // Clear existing rows
-        allTableBody.innerHTML = "";
-
-        // Loop through the data array
-        dataArray.forEach((item) => {
-          // Create a new row in the table
-          const row = document.createElement("tr");
-
-          // Create table cells for ID, Name, and Condition
-          const idCell = document.createElement("td");
-          idCell.textContent = item.id;
-
-          const nameCell = document.createElement("td");
-          nameCell.textContent = item.name;
-
-          const conditionCell = document.createElement("td");
-          conditionCell.textContent = item.condition;
-
-          // Append cells to the row
-          row.appendChild(idCell);
-          row.appendChild(nameCell);
-          row.appendChild(conditionCell);
-
-          // Append the row to the table body
-          allTableBody.appendChild(row);
+        // Populate the table with values
+        categories.forEach(function (category) {
+          var row = tableBody.insertRow();
+          var cell = row.insertCell(0);
+          cell.textContent = category;
         });
       }
 
-      // Function to populate the table with conditional data
-      function populateConditionalTable() {
-        const conditionalTableBody = document.getElementById(
-          "conditionalTableBody"
-        );
-        const dataArray = JSON.parse(localStorage.getItem("userData")) || [];
+      // Function to add a category to the table and local storage
+      function addCategory() {
+        var inputCategory = document.getElementById("inputCategory");
+        var newCategory = inputCategory.value.trim();
 
-        // Clear existing rows
-        conditionalTableBody.innerHTML = "";
+        if (newCategory !== "") {
+          // Retrieve existing categories from local storage
+          var categories =
+            JSON.parse(localStorage.getItem("customCategories")) || [];
 
-        // Loop through the data array
-        dataArray.forEach((item) => {
-          // Check the condition (you can modify this condition as needed)
-          if (item.condition === "someValue") {
-            // Create a new row in the table
-            const row = document.createElement("tr");
+          // Add the new category
+          categories.push(newCategory);
 
-            // Create table cells for ID, Name, and Condition
-            const idCell = document.createElement("td");
-            idCell.textContent = item.id;
+          // Save the updated categories back to local storage
+          localStorage.setItem("customCategories", JSON.stringify(categories));
 
-            const nameCell = document.createElement("td");
-            nameCell.textContent = item.name;
+          // Update the table with the new category
+          displayValuesInTable();
 
-            const conditionCell = document.createElement("td");
-            conditionCell.textContent = item.condition;
-
-            // Append cells to the row
-            row.appendChild(idCell);
-            row.appendChild(nameCell);
-            row.appendChild(conditionCell);
-
-            // Append the row to the table body
-            conditionalTableBody.appendChild(row);
-          }
-        });
+          // Clear the input field
+          inputCategory.value = "";
+        }
       }
 
-      // Call the functions to populate both tables initially
-      populateAllTable();
-      populateConditionalTable();
+      // Initial display of values in the table
+      displayValuesInTable();
     </script>
   </body>
 </html>
