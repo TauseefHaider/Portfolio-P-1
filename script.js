@@ -47,11 +47,22 @@ let progress = setInterval(() => {
 
 // UserName Show on Head
 
-const $username = document.getElementById("user-name");
+function username() {
+  const $username = document.getElementById("user-name");
 
-const profile = JSON.parse(localStorage.getItem("users"));
+  const users = JSON.parse(localStorage.getItem("users")) || [];
 
-$username.textContent = profile[0].name;
+  // Find the current user in the array
+  const currentUserObject = users.find((user) => user.email === activeuser);
+
+  // Check if userData exists for the current user
+  const profile =
+    currentUserObject && currentUserObject.name ? currentUserObject.name : [];
+
+  $username.textContent = profile;
+}
+
+username();
 
 // Income Expense btn
 
@@ -101,7 +112,16 @@ var selectElement = document.getElementById("selectValue-income");
 if (selectElement) {
   function populateSelect() {
     // Retrieve categories from localStorage
-    var income = JSON.parse(localStorage.getItem("income")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Find the current user in the array
+    const currentUserObject = users.find((user) => user.email === activeuser);
+
+    // Check if userData exists for the current user
+    const income =
+      currentUserObject && currentUserObject.income
+        ? currentUserObject.income
+        : [];
 
     // Populate select options
     income.forEach(function (category) {
@@ -117,7 +137,16 @@ var selectElement2 = document.getElementById("selectValue-expense");
 if (selectElement2) {
   function populateSelect1() {
     // Retrieve categories from localStorage
-    var expense = JSON.parse(localStorage.getItem("expense")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Find the current user in the array
+    const currentUserObject = users.find((user) => user.email === activeuser);
+
+    // Check if userData exists for the current user
+    const expense =
+      currentUserObject && currentUserObject.expense
+        ? currentUserObject.expense
+        : [];
 
     // Populate select options
     expense.forEach(function (category) {

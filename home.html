@@ -160,7 +160,7 @@
         >
           <!-- Percentage Circle -->
           <div
-            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[400px] md:p-[30px] gap-7 text-black flex flex-col justify-center items-center"
+            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col justify-center items-center"
           >
             <div
               id="progress-circle"
@@ -198,7 +198,7 @@
           </div>
           <!-- Input -->
           <div
-            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[400px] md:p-[30px] gap-7 text-black flex flex-col"
+            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col"
           >
             <div class="flex flex-col items-center">
               <div class="flex w-full bg-gray-200 rounded-md mt-5">
@@ -311,7 +311,7 @@
           </div>
         </div>
         <!-- < table> -->
-        <div class="p-2 bg-[#2b2b2b] rounded-md mb-10 w-[60%]">
+        <div class="p-2 bg-[#2b2b2b] rounded-md lg:w-[700px] mb-10">
           <table id="dataTable" class="table-auto border-collapse border">
             <thead>
               <tr>
@@ -336,6 +336,9 @@
       const $incomeSelect = document.getElementById("selectValue-income");
       const $incomeDate = document.getElementById("income-date-input");
       const $saveIncome = document.getElementById("save-income");
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      document.getElementById("income-date-input").value = currentDate;
 
       function handleSubmitIncome1() {
         const money = $txtincomeInpute.value;
@@ -359,24 +362,46 @@
           delete: "Delete",
         };
 
-        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        existingData.push(userData);
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
 
-        localStorage.setItem("userData", JSON.stringify(existingData));
+        // Create a child array 'userData' if not present, and add new data to it
+        if (currentUserObject && !currentUserObject.userData) {
+          currentUserObject.userData = [];
+        }
+        currentUserObject.userData.push(userData);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
 
         displayData();
         cleanupSlate();
       }
 
       function displayData() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+        // Retrieve users from local storage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
 
         const tableBody = document.querySelector("#dataTable tbody");
 
         tableBody.innerHTML = "";
 
-        userData.forEach((user) => {
+        userData.forEach((data) => {
           const row = tableBody.insertRow();
           const cell1 = row.insertCell(0);
           const cell2 = row.insertCell(1);
@@ -384,18 +409,18 @@
           const cell4 = row.insertCell(3);
           const cell5 = row.insertCell(4);
 
-          cell1.textContent = user.type;
-          cell2.textContent = user.money;
-          cell3.textContent = user.source;
-          cell4.textContent = user.date;
-          cell5.textContent = user.delete;
+          cell1.textContent = data.type;
+          cell2.textContent = data.money;
+          cell3.textContent = data.source;
+          cell4.textContent = data.date;
+          cell5.textContent = data.delete;
         });
       }
 
       function cleanupSlate() {
         $txtincomeInpute.value = "";
-        $incomeSelect.value = "Not Categorized";
-        $incomeDate.value = "";
+        $incomeSelect.value = "Salary";
+        $incomeDate.value = currentDate;
       }
 
       $saveIncome.addEventListener("click", handleSubmitIncome1);
@@ -405,6 +430,7 @@
       const $expenseSelect = document.getElementById("selectValue-expense");
       const $expenseDate = document.getElementById("expense-date-input");
       const $saveExpense = document.getElementById("save-expense");
+      document.getElementById("expense-date-input").value = currentDate;
 
       function handleSubmitExpense() {
         const money = $txtexpenseInpute.value;
@@ -428,11 +454,22 @@
           delete: "Delete",
         };
 
-        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+        // Retrieve existing user data from local storage or initialize an empty array
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        existingData.push(userData);
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
 
-        localStorage.setItem("userData", JSON.stringify(existingData));
+        // Create a child array 'userData' if not present, and add new data to it
+        if (currentUserObject && !currentUserObject.userData) {
+          currentUserObject.userData = [];
+        }
+        currentUserObject.userData.push(userData);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
 
         displayDataEx();
         cleanupSlateEx();
@@ -441,7 +478,18 @@
       // displaying data in table Expense
 
       function displayDataEx() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
 
         const tableBody = document.querySelector("#dataTable tbody");
 
@@ -465,8 +513,8 @@
 
       function cleanupSlateEx() {
         $txtexpenseInpute.value = "";
-        $expenseSelect.value = "Not Categorized";
-        $expenseDate.value = "";
+        $expenseSelect.value = "Shopping";
+        $expenseDate.value = currentDate;
       }
 
       $saveExpense.addEventListener("click", handleSubmitExpense);

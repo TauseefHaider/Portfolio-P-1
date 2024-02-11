@@ -3,68 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Show Values from Input in Table</title>
+    <title>Date Input with Default Current Date</title>
   </head>
   <body>
-    <label for="inputCategory">Add Category:</label>
-    <input type="text" id="inputCategory" />
-    <button onclick="addCategory()">Add to Table</button>
-
-    <br />
-
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Category</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
+    <label for="datepicker">Select a date:</label>
+    <input type="date" id="datepicker" />
 
     <script>
-      // Function to display values from local storage in a table
-      function displayValuesInTable() {
-        var tableBody = document.getElementById("tableBody");
-        tableBody.innerHTML = "";
+      // Get the current date in the format "YYYY-MM-DD"
+      const currentDate = new Date().toISOString().split("T")[0];
 
-        // Retrieve values from local storage
-        var categories =
-          JSON.parse(localStorage.getItem("customCategories")) || [];
-
-        // Populate the table with values
-        categories.forEach(function (category) {
-          var row = tableBody.insertRow();
-          var cell = row.insertCell(0);
-          cell.textContent = category;
-        });
-      }
-
-      // Function to add a category to the table and local storage
-      function addCategory() {
-        var inputCategory = document.getElementById("inputCategory");
-        var newCategory = inputCategory.value.trim();
-
-        if (newCategory !== "") {
-          // Retrieve existing categories from local storage
-          var categories =
-            JSON.parse(localStorage.getItem("customCategories")) || [];
-
-          // Add the new category
-          categories.push(newCategory);
-
-          // Save the updated categories back to local storage
-          localStorage.setItem("customCategories", JSON.stringify(categories));
-
-          // Update the table with the new category
-          displayValuesInTable();
-
-          // Clear the input field
-          inputCategory.value = "";
-        }
-      }
-
-      // Initial display of values in the table
-      displayValuesInTable();
+      // Set the default value of the date input to the current date
+      document.getElementById("datepicker").value = currentDate;
     </script>
   </body>
 </html>

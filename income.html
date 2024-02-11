@@ -218,6 +218,10 @@
       const $incomeDate = document.getElementById("income-date-input");
       const $saveIncome = document.getElementById("save-income");
 
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      document.getElementById("income-date-input").value = currentDate;
+
       let incomeData = [];
 
       function handleSubmitIncome() {
@@ -242,19 +246,30 @@
           delete: "Delete",
         };
 
-        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        existingData.push(userData);
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
 
-        localStorage.setItem("userData", JSON.stringify(existingData));
+        // Create a child array 'userData' if not present, and add new data to it
+        if (currentUserObject && !currentUserObject.userData) {
+          currentUserObject.userData = [];
+        }
+        currentUserObject.userData.push(userData);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
+
         displayDataIncome();
         cleanupSlate();
       }
 
       function cleanupSlate() {
         $txtincomeInpute.value = "";
-        $incomeSelect.value = "Not Categorized";
-        $incomeDate.value = "";
+        $incomeSelect.value = "Salary";
+        $incomeDate.value = currentDate;
       }
 
       // displaying data in table
@@ -262,14 +277,24 @@
       $saveIncome.addEventListener("click", handleSubmitIncome);
 
       function displayDataIncome() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
 
         const tableBody = document.querySelector("#dataTableIncome tbody");
 
         tableBody.innerHTML = "";
 
-        userData.forEach((user) => {
-          if (user.type === "Income") {
+        userData.forEach((data) => {
+          if (data.type === "Income") {
             const row = tableBody.insertRow();
             const cell1 = row.insertCell(0);
             const cell2 = row.insertCell(1);
@@ -277,11 +302,11 @@
             const cell4 = row.insertCell(3);
             const cell5 = row.insertCell(4);
 
-            cell1.textContent = user.type;
-            cell2.textContent = user.money;
-            cell3.textContent = user.source;
-            cell4.textContent = user.date;
-            cell5.textContent = user.delete;
+            cell1.textContent = data.type;
+            cell2.textContent = data.money;
+            cell3.textContent = data.source;
+            cell4.textContent = data.date;
+            cell5.textContent = data.delete;
           }
         });
       }

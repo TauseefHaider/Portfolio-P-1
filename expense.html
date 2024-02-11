@@ -191,9 +191,7 @@
             Save
           </button>
         </div>
-        <div
-          class="p-2 bg-[#2b2b2b] rounded-md md:w-[400px] lg:w-[700px] mb-10"
-        >
+        <div class="p-2 bg-[#2b2b2b] rounded-md lg:w-[700px] mb-10">
           <table
             id="dataTableExpense"
             class="table-auto border-collapse border"
@@ -222,7 +220,9 @@
       const $expenseDate = document.getElementById("expense-date-input");
       const $saveExpense = document.getElementById("save-expense");
 
-      let incomeData = [];
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      document.getElementById("expense-date-input").value = currentDate;
 
       function handleSubmitExpense1() {
         const money = $txtexpenseInpute.value;
@@ -246,19 +246,29 @@
           delete: "Delete",
         };
 
-        const existingData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        existingData.push(userData);
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
 
-        localStorage.setItem("userData", JSON.stringify(existingData));
+        // Create a child array 'userData' if not present, and add new data to it
+        if (currentUserObject && !currentUserObject.userData) {
+          currentUserObject.userData = [];
+        }
+        currentUserObject.userData.push(userData);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
         displayDataExpense1();
         cleanupSlate4();
       }
 
       function cleanupSlate4() {
         $txtexpenseInpute.value = "";
-        $expenseSelect.value = "Not Categorized";
-        $expenseDate.value = "";
+        $expenseSelect.value = "Shopping";
+        $expenseDate.value = currentDate;
       }
 
       // displaying data in table
@@ -266,7 +276,18 @@
       $saveExpense.addEventListener("click", handleSubmitExpense1);
 
       function displayDataExpense1() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
 
         const tableBody = document.querySelector("#dataTableExpense tbody");
 
