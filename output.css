@@ -662,6 +662,11 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -774,6 +779,10 @@ video {
   margin-right: 2rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -818,8 +827,8 @@ video {
   margin-top: 1.5rem;
 }
 
-.mt-0 {
-  margin-top: 0px;
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .block {
@@ -892,6 +901,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[500px\] {
+  height: 500px;
 }
 
 .w-10 {
@@ -1396,6 +1409,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1414,11 +1432,6 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-0 {
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 
 .pb-3 {
@@ -1720,16 +1733,8 @@ video {
     grid-column: span 1 / span 1;
   }
 
-  .md\:m-4 {
-    margin: 1rem;
-  }
-
   .md\:mb-10 {
     margin-bottom: 2.5rem;
-  }
-
-  .md\:ml-4 {
-    margin-left: 1rem;
   }
 
   .md\:ml-\[100px\] {
@@ -1792,8 +1797,8 @@ video {
     flex-direction: column;
   }
 
-  .md\:gap-4 {
-    gap: 1rem;
+  .md\:gap-2 {
+    gap: 0.5rem;
   }
 
   .md\:rounded-none {
@@ -1813,11 +1818,6 @@ video {
     padding: 30px;
   }
 
-  .md\:py-0 {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1830,10 +1830,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:m-14 {
-    margin: 3.5rem;
-  }
-
   .lg\:flex {
     display: flex;
   }
@@ -1852,6 +1848,10 @@ video {
 
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:gap-10 {
+    gap: 2.5rem;
   }
 
   .lg\:px-20 {

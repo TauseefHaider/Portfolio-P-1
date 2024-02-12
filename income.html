@@ -64,44 +64,62 @@
         class="md:flex md:flex-col h-[calc(100vh-110px)] pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 fixed top-[110px]"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
           <div
+            onclick="logout()"
             class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -111,44 +129,62 @@
         class="pl-5 flex-col hidden h-[calc(100vh-110px)] justify-between md:hidden bg-[#2b2b2b] w-[200px] absolute text-slate-100 text-base font-bold py-10 gap-8"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
-          <div
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
+          <div
+            onclick="logout()"
+            class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -159,7 +195,7 @@
             type="number"
             id="txtincome-input"
             class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-            placeholder=""
+            placeholder="Add Income"
             required
           />
 
@@ -182,6 +218,13 @@
             placeholder=""
             required
           />
+          <input
+            type="text"
+            id="income-note-input"
+            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+            placeholder="Add Note"
+            required
+          />
 
           <button
             id="save-income"
@@ -200,6 +243,7 @@
                 <th class="border p-1">Amount</th>
                 <th class="border p-1">Category</th>
                 <th class="border p-1">Date</th>
+                <th class="border p-1">Note</th>
 
                 <th class="border p-1">Delete</th>
               </tr>
@@ -216,6 +260,7 @@
       const $txtincomeInpute = document.getElementById("txtincome-input");
       const $incomeSelect = document.getElementById("selectValue-income");
       const $incomeDate = document.getElementById("income-date-input");
+      const $incomeNote = document.getElementById("income-note-input");
       const $saveIncome = document.getElementById("save-income");
 
       const currentDate = new Date().toISOString().split("T")[0];
@@ -228,6 +273,7 @@
         const money = $txtincomeInpute.value;
         const source = $incomeSelect.value;
         const date = $incomeDate.value;
+        const note = $incomeNote.value;
 
         if (!money) {
           alert("Put Your Income");
@@ -237,11 +283,16 @@
           alert("Add Date");
           return;
         }
+        if (!note) {
+          alert("Add Note");
+          return;
+        }
 
         const userData = {
           money,
           source,
           date,
+          note,
           type: "Income",
           delete: "Delete",
         };
@@ -270,6 +321,7 @@
         $txtincomeInpute.value = "";
         $incomeSelect.value = "Salary";
         $incomeDate.value = currentDate;
+        $incomeNote.value = "";
       }
 
       // displaying data in table
@@ -301,12 +353,14 @@
             const cell3 = row.insertCell(2);
             const cell4 = row.insertCell(3);
             const cell5 = row.insertCell(4);
+            const cell6 = row.insertCell(5);
 
             cell1.textContent = data.type;
             cell2.textContent = data.money;
             cell3.textContent = data.source;
             cell4.textContent = data.date;
-            cell5.textContent = data.delete;
+            cell5.textContent = data.note;
+            cell6.textContent = data.delete;
           }
         });
       }

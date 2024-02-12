@@ -66,44 +66,62 @@
         class="md:flex md:flex-col h-[calc(100vh-110px)] pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 fixed top-[110px]"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
           <div
+            onclick="logout()"
             class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -113,44 +131,62 @@
         class="pl-5 flex-col hidden h-[calc(100vh-110px)] justify-between md:hidden bg-[#2b2b2b] w-[200px] absolute text-slate-100 text-base font-bold py-10 gap-8"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
-          <div
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
+          <div
+            onclick="logout()"
+            class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -160,7 +196,7 @@
         >
           <!-- Percentage Circle -->
           <div
-            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col justify-center items-center"
+            class="bg-white rounded-md h-[500px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col justify-center items-center"
           >
             <div
               id="progress-circle"
@@ -198,7 +234,7 @@
           </div>
           <!-- Input -->
           <div
-            class="bg-white rounded-md h-[450px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col"
+            class="bg-white rounded-md h-[500px] w-[300px] md:w-[350px] lg:w-[350px] md:p-[30px] gap-7 text-black flex flex-col"
           >
             <div class="flex flex-col items-center">
               <div class="flex w-full bg-gray-200 rounded-md mt-5">
@@ -222,6 +258,7 @@
                     <p>Income:</p>
                     <p>Source:</p>
                     <p class="mt-2">Date:</p>
+                    <p>Note:</p>
                   </div>
 
                   <div class="flex flex-col mt-10 ml-3 mr-2 gap-5">
@@ -252,6 +289,13 @@
                       placeholder=""
                       required
                     />
+                    <input
+                      type="text"
+                      id="income-note-input"
+                      class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+                      placeholder=""
+                      required
+                    />
 
                     <button
                       id="save-income"
@@ -268,6 +312,7 @@
                     <p>Spend:</p>
                     <p>Where:</p>
                     <p class="mt-2">Date:</p>
+                    <p>Note:</p>
                   </div>
 
                   <div class="flex flex-col mt-10 ml-3 mr-4 gap-5">
@@ -297,6 +342,13 @@
                       placeholder=""
                       required
                     />
+                    <input
+                      type="text"
+                      id="expense-note-input"
+                      class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+                      placeholder=""
+                      required
+                    />
 
                     <button
                       id="save-expense"
@@ -319,6 +371,7 @@
                 <th class="border p-1">Amount</th>
                 <th class="border p-1">Category</th>
                 <th class="border p-1">Date</th>
+                <th class="border p-1">Note</th>
 
                 <th class="border p-1">Delete</th>
               </tr>
@@ -334,6 +387,7 @@
     <script>
       const $txtincomeInpute = document.getElementById("txtincome-input");
       const $incomeSelect = document.getElementById("selectValue-income");
+      const $incomeNote = document.getElementById("income-note-input");
       const $incomeDate = document.getElementById("income-date-input");
       const $saveIncome = document.getElementById("save-income");
       const currentDate = new Date().toISOString().split("T")[0];
@@ -344,6 +398,7 @@
         const money = $txtincomeInpute.value;
         const source = $incomeSelect.value;
         const date = $incomeDate.value;
+        const note = $incomeNote.value;
 
         if (!money) {
           alert("Put Your Income");
@@ -353,11 +408,16 @@
           alert("Add Date");
           return;
         }
+        if (!note) {
+          alert("Add Note");
+          return;
+        }
 
         const userData = {
           money,
           source,
           date,
+          note,
           type: "Income",
           delete: "Delete",
         };
@@ -408,12 +468,14 @@
           const cell3 = row.insertCell(2);
           const cell4 = row.insertCell(3);
           const cell5 = row.insertCell(4);
+          const cell6 = row.insertCell(5);
 
           cell1.textContent = data.type;
           cell2.textContent = data.money;
           cell3.textContent = data.source;
           cell4.textContent = data.date;
-          cell5.textContent = data.delete;
+          cell5.textContent = data.note;
+          cell6.textContent = data.delete;
         });
       }
 
@@ -421,6 +483,7 @@
         $txtincomeInpute.value = "";
         $incomeSelect.value = "Salary";
         $incomeDate.value = currentDate;
+        $incomeNote.value = "";
       }
 
       $saveIncome.addEventListener("click", handleSubmitIncome1);
@@ -429,6 +492,7 @@
       const $txtexpenseInpute = document.getElementById("txtexpense-input");
       const $expenseSelect = document.getElementById("selectValue-expense");
       const $expenseDate = document.getElementById("expense-date-input");
+      const $expenseNote = document.getElementById("expense-note-input");
       const $saveExpense = document.getElementById("save-expense");
       document.getElementById("expense-date-input").value = currentDate;
 
@@ -436,6 +500,7 @@
         const money = $txtexpenseInpute.value;
         const source = $expenseSelect.value;
         const date = $expenseDate.value;
+        const note = $expenseNote.value;
 
         if (!money) {
           alert("Put Your Expense");
@@ -445,11 +510,16 @@
           alert("Add Date");
           return;
         }
+        if (!note) {
+          alert("Add Note");
+          return;
+        }
 
         const userData = {
           money,
           source,
           date,
+          note,
           type: "Expense",
           delete: "Delete",
         };
@@ -502,12 +572,14 @@
           const cell3 = row.insertCell(2);
           const cell4 = row.insertCell(3);
           const cell5 = row.insertCell(4);
+          const cell6 = row.insertCell(5);
 
           cell1.textContent = user.type;
           cell2.textContent = user.money;
           cell3.textContent = user.source;
           cell4.textContent = user.date;
-          cell5.textContent = user.delete;
+          cell5.textContent = user.note;
+          cell6.textContent = user.delete;
         });
       }
 

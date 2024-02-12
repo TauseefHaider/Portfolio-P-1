@@ -3,12 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setting</title>
+    <title>Categories</title>
     <link rel="stylesheet" href="output.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- table styling -->
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+      }
+      @media screen and (max-width: 400px) {
+        td {
+          padding: 1px;
+        }
+      }
+      th {
+        background-color: #f2f2f2;
+        color: black;
+      }
+    </style>
   </head>
   <body class="bg-[#404040] font-Source Sans Pro, sans-serif text-slate-100">
     <header class="bg-[#2b2b2b] sticky top-0 md:h-[110px]">
@@ -41,44 +63,62 @@
         class="md:flex md:flex-col h-[calc(100vh-110px)] pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 fixed top-[110px]"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
+            class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
           <div
+            onclick="logout()"
             class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -88,90 +128,161 @@
         class="pl-5 flex-col hidden h-[calc(100vh-110px)] justify-between md:hidden bg-[#2b2b2b] w-[200px] absolute text-slate-100 text-base font-bold py-10 gap-8"
       >
         <div class="flex flex-col gap-7">
-          <div
+          <a
+            href="home.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> dashboard </span>
-            <a href="home.html">Dashboard</a>
-          </div>
-          <div
+            <span>Dashboard</span></a
+          >
+
+          <a
+            href="income.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> savings </span>
 
-            <a href="income.html">Income</a>
-          </div>
-          <div
+            <span>Income</span></a
+          >
+
+          <a
+            href="expense.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> payments </span>
-            <a href="expense.html">Expenses</a>
-          </div>
-          <div
+            <span>Expenses</span></a
+          >
+
+          <a
+            href="categories.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> calculate </span>
-            <a href="categories.html">Categories</a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div
+            <span>Categories</span></a
+          >
+
+          <a
+            href="setting.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
             <span class="material-symbols-outlined"> settings </span>
-            <a id="logout-1" href="setting.html">Setting</a>
-          </div>
-          <div
+            <span>Setting</span></a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <a
+            href="profile.html"
             class="flex gap-3 cursor-pointer items-center hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
           >
+            <span class="material-symbols-outlined"> person </span>
+            <span>Profile</span></a
+          >
+
+          <div
+            onclick="logout()"
+            class="flex gap-3 items-center cursor-pointer hover:text-[#51d289] hover:bg-[#404040] p-2 rounded-md mr-1"
+          >
             <span class="material-symbols-outlined"> logout </span>
-            <a id="logout-1" href="" onclick="logout()">Logout</a>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
-      <section class="flex flex-col md:ml-[200px] items-center w-full gap-14">
-        <div class="flex flex-col gap-6 m-20">
-          <h1 class="text-xl font-bold mb-8 text-center">
-            Change Your Password
-          </h1>
-          <div class="flex gap-4">
-            <div class="flex flex-col items-end gap-10 mt-3">
-              <p>Old Password :</p>
-              <p>New Password :</p>
-              <p>Confirm New Password :</p>
+      <section class="flex flex-col md:ml-[200px] items-center w-full">
+        <!-- Adding New Categories -->
+
+        <div class="flex flex-col lg:flex-row justify-center gap-4 mt-10 mr-2">
+          <div
+            class="ml-4 flex flex-col bg-slate-300 text-black py-6 md:p-6 rounded-md"
+          >
+            <div class="flex items-center gap-4">
+              <p>Add Income Category:</p>
+              <input
+                type="text"
+                id="income-category"
+                class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+                placeholder=""
+                required
+              />
             </div>
-            <div class="flex flex-col gap-4 mr-24">
-              <input
-                type="password"
-                id="old-pass"
-                class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-                placeholder=""
-                required
-              />
-
-              <input
-                type="password"
-                id="new-pass"
-                class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-                placeholder=""
-                required
-              />
-
-              <input
-                type="password"
-                id="confirm-new-pass"
-                class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-                placeholder=""
-                required
-              />
+            <button
+              id="add-income-category"
+              onclick="addCustomCategory()"
+              class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
+            >
+              Add
+            </button>
+            <div>
+              <table
+                id="income-category-table"
+                class="table-auto text-center text-xl mt-6"
+              >
+                <th>Income Categories</th>
+                <tbody>
+                  <tr>
+                    <td>Salary</td>
+                  </tr>
+                  <tr>
+                    <td>Bonus</td>
+                  </tr>
+                  <tr>
+                    <td>Commission</td>
+                  </tr>
+                  <tr>
+                    <td>Gift</td>
+                  </tr>
+                  <tr>
+                    <td>Others</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <button
-            id="change-pass"
-            class="border p-2 rounded-md w-[120px] self-center text-black mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
+          <div
+            class="ml-4 flex flex-col bg-slate-300 text-black py-6 md:p-6 rounded-md"
           >
-            save
-          </button>
+            <div class="flex items-center gap-4">
+              <p>Add Expense Category:</p>
+              <input
+                type="text"
+                id="expense-category"
+                class="bg-gray-100 border-2 border-gray-300 rounded-md w-[200px] text-black p-2.5 focus:border-2 focus:border-black text-center"
+                placeholder=""
+                required
+              />
+            </div>
+            <button
+              id="add-expense-category"
+              onclick="addCustomCategory1()"
+              class="border p-2 rounded-md w-[120px] self-center mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
+            >
+              Add
+            </button>
+            <div>
+              <table
+                id="expense-category-table"
+                class="table-auto text-center text-xl mt-6"
+              >
+                <th>Expense Categories</th>
+                <tbody>
+                  <tr>
+                    <td>Shopping</td>
+                  </tr>
+                  <tr>
+                    <td>Utility</td>
+                  </tr>
+                  <tr>
+                    <td>Food</td>
+                  </tr>
+                  <tr>
+                    <td>Petrol</td>
+                  </tr>
+                  <tr>
+                    <td>Others</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -179,56 +290,127 @@
     <!-- Javascript -->
     <script src="script.js"></script>
     <script>
-      const old_pass = document.getElementById("old-pass");
-      const new_pass = document.getElementById("new-pass");
-      const confirm_new_pass = document.getElementById("confirm-new-pass");
-      const change_pass = document.getElementById("change-pass");
+      function addCustomCategory() {
+        const incomeCategoryInput = document.getElementById("income-category");
+        var income = incomeCategoryInput.value.trim();
 
-      const profile_pass = JSON.parse(localStorage.getItem("users"));
+        if (income !== "") {
+          // Retrieve existing categories from localStorage
+          const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      const $userpass = profile_pass[0].password;
+          // Find the current user in the array
+          const currentUserObject = users.find(
+            (user) => user.email === activeuser
+          );
 
-      function updateLocalStorage() {
-        if (
-          old_pass.value === "" ||
-          confirm_new_pass.value === "" ||
-          new_pass.value === ""
-        ) {
-          alert("all fields require");
-        } else {
-          // Loop through the users array to find the active user and set password
-          var users = JSON.parse(localStorage.getItem("users"));
-          for (let i = 0; i < users.length; i++) {
-            if (users[i].email === activeuser) {
-              users[i].password = reset_password();
-              break;
-              console.log(users[i]);
-            }
+          // Create a child array 'userData' if not present, and add new data to it
+          if (currentUserObject && !currentUserObject.income) {
+            currentUserObject.income = [];
           }
-          //set new password function
-          function reset_password() {
-            let newpass = $userpass;
-            if ($userpass == old_pass.value) {
-              if (new_pass.value === confirm_new_pass.value) {
-                newpass = new_pass.value;
-                old_pass.value = "";
-                new_pass.value = "";
-                confirm_new_pass.value = "";
-                location.replace("./login.html");
-              } else {
-                alert("Password does not match");
-              }
-            } else {
-              alert("Old password didn’t match!");
-            }
-            return newpass;
-          }
+          currentUserObject.income.push(income);
+
+          // Save the updated array back to local storage
           localStorage.setItem("users", JSON.stringify(users));
+
+          // Repopulate the select dropdown
+
+          // Clear the input field
+          incomeCategoryInput.value = "";
+          displayincomecategory();
         }
       }
 
-      // reset_password()
-      change_pass.addEventListener("click", updateLocalStorage);
+      // displaying data in table Expense
+
+      function displayincomecategory() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const income =
+          currentUserObject && currentUserObject.income
+            ? currentUserObject.income
+            : [];
+
+        const tableBody = document.querySelector(
+          "#income-category-table tbody"
+        );
+
+        tableBody.innerHTML = "";
+
+        income.forEach((category) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+
+          cell1.textContent = category;
+        });
+      }
+
+      displayincomecategory();
+
+      function addCustomCategory1() {
+        const expenseCategoryInput =
+          document.getElementById("expense-category");
+        var expense = expenseCategoryInput.value.trim();
+
+        if (expense !== "") {
+          // Retrieve existing categories from localStorage
+          const users = JSON.parse(localStorage.getItem("users")) || [];
+
+          // Find the current user in the array
+          const currentUserObject = users.find(
+            (user) => user.email === activeuser
+          );
+
+          // Create a child array 'userData' if not present, and add new data to it
+          if (currentUserObject && !currentUserObject.expense) {
+            currentUserObject.expense = [];
+          }
+          currentUserObject.expense.push(expense);
+
+          // Save the updated array back to local storage
+          localStorage.setItem("users", JSON.stringify(users));
+
+          // Repopulate the select dropdown
+
+          // Clear the input field
+          expenseCategoryInput.value = "";
+          displayexpensecategory();
+        }
+      }
+
+      function displayexpensecategory() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const expense =
+          currentUserObject && currentUserObject.expense
+            ? currentUserObject.expense
+            : [];
+
+        const tableBody = document.querySelector(
+          "#expense-category-table tbody"
+        );
+
+        tableBody.innerHTML = "";
+
+        expense.forEach((category) => {
+          const row = tableBody.insertRow();
+          const cell1 = row.insertCell(0);
+
+          cell1.textContent = category;
+        });
+      }
+      displayexpensecategory();
     </script>
   </body>
 </html>

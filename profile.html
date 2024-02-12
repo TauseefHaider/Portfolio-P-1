@@ -3,39 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expenses</title>
+    <title>Setting</title>
     <link rel="stylesheet" href="output.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <!-- table styling -->
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      th,
-      td {
-        border: 1px solid #dddddd;
-        text-align: center;
-        padding: 8px;
-        color: white;
-      }
-      @media screen and (max-width: 400px) {
-        td {
-          padding: 1px;
-        }
-      }
-      th {
-        background-color: #f2f2f2;
-        color: black;
-      }
-    </style>
   </head>
-  <body
-    class="bg-[#404040] font-Source Sans Pro, sans-serif w-full text-slate-100"
-  >
+  <body class="bg-[#404040] font-Source Sans Pro, sans-serif text-slate-100">
     <header class="bg-[#2b2b2b] sticky top-0 md:h-[110px]">
       <div
         class="text-slate-100 p-3 md:p-6 lg:px-20 bg-[#2b2b2b] flex justify-between items-center"
@@ -60,7 +35,7 @@
       </div>
       <hr class="mx-5 pb-4" />
     </header>
-    <div class="w-full flex h-[calc(100%-110px)]">
+    <div class="w-full flex h-[calc(100%-110px)] bg-[#404040]">
       <!-- sidebar -->
       <aside
         class="md:flex md:flex-col h-[calc(100vh-110px)] pl-5 justify-between hidden bg-[#2b2b2b] w-[200px] text-slate-100 text-base font-bold py-10 gap-8 fixed top-[110px]"
@@ -190,68 +165,44 @@
           </div>
         </div>
       </aside>
-      <section class="flex flex-col md:ml-[100px] items-center w-full gap-14">
-        <div class="flex flex-col mt-10 ml-3 mr-2 gap-7">
-          <p class="self-center text-xl md:text-2xl font-bold">Expense</p>
-          <input
-            type="number"
-            id="txtexpense-input"
-            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-            placeholder="Add Expense"
-            required
-          />
-          <select
-            id="selectValue-expense"
-            name="selectValue"
-            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-          >
-            <option>Shopping</option>
-            <option>Utility</option>
-            <option>Food</option>
-            <option>Petrol</option>
-            <option>Others</option>
-          </select>
+      <section class="flex flex-col md:ml-[200px] items-center w-full gap-14">
+        <div class="flex flex-col gap-6 m-20">
+          <h1 class="text-xl font-bold mb-8 text-center">
+            Change Your Password
+          </h1>
 
-          <input
-            type="date"
-            id="expense-date-input"
-            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-            placeholder=""
-            required
-          />
-          <input
-            type="text"
-            id="expense-note-input"
-            class="bg-gray-100 border-2 border-gray-300 md:w-[400px] w-[200px] rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
-            placeholder="Add Note"
-            required
-          />
+          <div class="flex flex-col gap-4">
+            <input
+              type="password"
+              id="old-pass"
+              class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
+              placeholder="Old Password"
+              required
+            />
+
+            <input
+              type="password"
+              id="new-pass"
+              class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
+              placeholder="New Password"
+              required
+            />
+
+            <input
+              type="password"
+              id="confirm-new-pass"
+              class="bg-gray-100 border-2 w-[200px] border-gray-300 rounded-md text-black p-2.5 focus:border-2 focus:border-black text-center"
+              placeholder="Confirm New Password"
+              required
+            />
+          </div>
 
           <button
-            id="save-expense"
+            id="change-pass"
             class="border p-2 rounded-md w-[120px] self-center text-black mt-6 bg-[#51d289] hover:bg-[#1f9e56] hover:text-slate-100"
           >
-            Save
+            save
           </button>
-        </div>
-        <div class="p-2 bg-[#2b2b2b] rounded-md lg:w-[700px] mb-10">
-          <table
-            id="dataTableExpense"
-            class="table-auto border-collapse border"
-          >
-            <thead>
-              <tr>
-                <th class="border p-1">Type</th>
-                <th class="border p-1">Amount</th>
-                <th class="border p-1">Category</th>
-                <th class="border p-1">Date</th>
-                <th class="border p-1">Note</th>
-
-                <th class="border p-1">Delete</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
         </div>
       </section>
     </div>
@@ -259,114 +210,56 @@
     <!-- Javascript -->
     <script src="script.js"></script>
     <script>
-      const $txtexpenseInpute = document.getElementById("txtexpense-input");
-      const $expenseSelect = document.getElementById("selectValue-expense");
-      const $expenseDate = document.getElementById("expense-date-input");
-      const $expenseNote = document.getElementById("expense-note-input");
-      const $saveExpense = document.getElementById("save-expense");
+      const old_pass = document.getElementById("old-pass");
+      const new_pass = document.getElementById("new-pass");
+      const confirm_new_pass = document.getElementById("confirm-new-pass");
+      const change_pass = document.getElementById("change-pass");
 
-      const currentDate = new Date().toISOString().split("T")[0];
+      const profile_pass = JSON.parse(localStorage.getItem("users"));
 
-      document.getElementById("expense-date-input").value = currentDate;
+      const $userpass = profile_pass[0].password;
 
-      function handleSubmitExpense1() {
-        const money = $txtexpenseInpute.value;
-        const source = $expenseSelect.value;
-        const date = $expenseDate.value;
-        const note = $expenseNote.value;
-
-        if (!money) {
-          alert("Put Your Income");
-          return;
-        }
-        if (!date) {
-          alert("Add Date");
-          return;
-        }
-        if (!note) {
-          alert("Add Note");
-          return;
-        }
-
-        const userData = {
-          money,
-          source,
-          date,
-          note,
-          type: "Expense",
-          delete: "Delete",
-        };
-
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        // Find the current user in the array
-        const currentUserObject = users.find(
-          (user) => user.email === activeuser
-        );
-
-        // Create a child array 'userData' if not present, and add new data to it
-        if (currentUserObject && !currentUserObject.userData) {
-          currentUserObject.userData = [];
-        }
-        currentUserObject.userData.push(userData);
-
-        // Save the updated array back to local storage
-        localStorage.setItem("users", JSON.stringify(users));
-        displayDataExpense1();
-        cleanupSlate4();
-      }
-
-      function cleanupSlate4() {
-        $txtexpenseInpute.value = "";
-        $expenseSelect.value = "Shopping";
-        $expenseDate.value = currentDate;
-        $expenseNote.value = "";
-      }
-
-      // displaying data in table
-
-      $saveExpense.addEventListener("click", handleSubmitExpense1);
-
-      function displayDataExpense1() {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        // Find the current user in the array
-        const currentUserObject = users.find(
-          (user) => user.email === activeuser
-        );
-
-        // Check if userData exists for the current user
-        const userData =
-          currentUserObject && currentUserObject.userData
-            ? currentUserObject.userData
-            : [];
-
-        const tableBody = document.querySelector("#dataTableExpense tbody");
-
-        tableBody.innerHTML = "";
-
-        userData.forEach((user) => {
-          if (user.type === "Expense") {
-            const row = tableBody.insertRow();
-            const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
-            const cell3 = row.insertCell(2);
-            const cell4 = row.insertCell(3);
-            const cell5 = row.insertCell(4);
-            const cell6 = row.insertCell(5);
-
-            cell1.textContent = user.type;
-            cell2.textContent = user.money;
-            cell3.textContent = user.source;
-            cell4.textContent = user.date;
-            cell5.textContent = user.note;
-            cell6.textContent = user.delete;
+      function updateLocalStorage() {
+        if (
+          old_pass.value === "" ||
+          confirm_new_pass.value === "" ||
+          new_pass.value === ""
+        ) {
+          alert("all fields require");
+        } else {
+          // Loop through the users array to find the active user and set password
+          var users = JSON.parse(localStorage.getItem("users"));
+          for (let i = 0; i < users.length; i++) {
+            if (users[i].email === activeuser) {
+              users[i].password = reset_password();
+              break;
+              console.log(users[i]);
+            }
           }
-        });
+          //set new password function
+          function reset_password() {
+            let newpass = $userpass;
+            if ($userpass == old_pass.value) {
+              if (new_pass.value === confirm_new_pass.value) {
+                newpass = new_pass.value;
+                old_pass.value = "";
+                new_pass.value = "";
+                confirm_new_pass.value = "";
+                location.replace("./login.html");
+              } else {
+                alert("Password does not match");
+              }
+            } else {
+              alert("Old password didn’t match!");
+            }
+            return newpass;
+          }
+          localStorage.setItem("users", JSON.stringify(users));
+        }
       }
 
-      displayDataExpense1();
-      populateSelect1();
+      // reset_password()
+      change_pass.addEventListener("click", updateLocalStorage);
     </script>
   </body>
 </html>
