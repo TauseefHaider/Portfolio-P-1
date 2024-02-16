@@ -345,7 +345,7 @@
 
         tableBody.innerHTML = "";
 
-        userData.forEach((data) => {
+        userData.forEach((data, index) => {
           if (data.type === "Income") {
             const row = tableBody.insertRow();
             const cell1 = row.insertCell(0);
@@ -360,9 +360,44 @@
             cell3.textContent = data.source;
             cell4.textContent = data.date;
             cell5.textContent = data.note;
-            cell6.textContent = data.delete;
+
+            const deleteLink = document.createElement("a");
+            deleteLink.href = "#";
+            deleteLink.textContent = "Delete";
+            deleteLink.onclick = function () {
+              deleteRow(index);
+            };
+
+            cell6.appendChild(deleteLink);
           }
         });
+      }
+
+      function deleteRow(index) {
+        // Get current user from the hidden input
+
+        // Retrieve users from local storage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
+
+        // Remove the selected row from userData
+        userData.splice(index, 1);
+
+        // Update the array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Display the updated data in the table
+        displayDataIncome();
       }
 
       displayDataIncome();

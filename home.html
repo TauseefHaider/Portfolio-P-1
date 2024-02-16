@@ -461,7 +461,7 @@
 
         tableBody.innerHTML = "";
 
-        userData.forEach((data) => {
+        userData.forEach((data, index) => {
           const row = tableBody.insertRow();
           const cell1 = row.insertCell(0);
           const cell2 = row.insertCell(1);
@@ -475,8 +475,43 @@
           cell3.textContent = data.source;
           cell4.textContent = data.date;
           cell5.textContent = data.note;
-          cell6.textContent = data.delete;
+          // Create a delete link in the last column
+          const deleteLink = document.createElement("a");
+          deleteLink.href = "#";
+          deleteLink.textContent = "Delete";
+          deleteLink.onclick = function () {
+            deleteRow(index);
+          };
+
+          cell6.appendChild(deleteLink);
         });
+      }
+
+      function deleteRow(index) {
+        // Get current user from the hidden input
+
+        // Retrieve users from local storage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
+
+        // Remove the selected row from userData
+        userData.splice(index, 1);
+
+        // Update the array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Display the updated data in the table
+        displayData();
       }
 
       function cleanupSlate() {
@@ -565,7 +600,7 @@
 
         tableBody.innerHTML = "";
 
-        userData.forEach((user) => {
+        userData.forEach((data, index) => {
           const row = tableBody.insertRow();
           const cell1 = row.insertCell(0);
           const cell2 = row.insertCell(1);
@@ -574,19 +609,54 @@
           const cell5 = row.insertCell(4);
           const cell6 = row.insertCell(5);
 
-          cell1.textContent = user.type;
-          cell2.textContent = user.money;
-          cell3.textContent = user.source;
-          cell4.textContent = user.date;
-          cell5.textContent = user.note;
-          cell6.textContent = user.delete;
+          cell1.textContent = data.type;
+          cell2.textContent = data.money;
+          cell3.textContent = data.source;
+          cell4.textContent = data.date;
+          cell5.textContent = data.note;
+          const deleteLink = document.createElement("a");
+          deleteLink.href = "#";
+          deleteLink.textContent = "Delete";
+          deleteLink.onclick = function () {
+            deleteRow(index);
+          };
+
+          cell6.appendChild(deleteLink);
         });
+      }
+
+      function deleteRow(index) {
+        // Get current user from the hidden input
+
+        // Retrieve users from local storage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find the current user in the array
+        const currentUserObject = users.find(
+          (user) => user.email === activeuser
+        );
+
+        // Check if userData exists for the current user
+        const userData =
+          currentUserObject && currentUserObject.userData
+            ? currentUserObject.userData
+            : [];
+
+        // Remove the selected row from userData
+        userData.splice(index, 1);
+
+        // Update the array back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Display the updated data in the table
+        displayDataEx();
       }
 
       function cleanupSlateEx() {
         $txtexpenseInpute.value = "";
         $expenseSelect.value = "Shopping";
         $expenseDate.value = currentDate;
+        $expenseNote.value = "";
       }
 
       $saveExpense.addEventListener("click", handleSubmitExpense);
