@@ -161,4 +161,5 @@ if (selectElement2) {
 function logout() {
   // Clear the relevant data from local storage
   localStorage.removeItem("activeuser");
+  location.replace("./login.html");
 }
