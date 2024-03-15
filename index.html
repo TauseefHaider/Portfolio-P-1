@@ -28,11 +28,13 @@
         <div
           class="flex flex-col gap-8 col-span-2 md:col-span-1 justify-center bg-[#2b2b2b] rounded-xl md:rounded-r-xl md:rounded-none shadow-xl"
         >
-          <p
-            class="text-slate-100 text-2xl text-center mb-2 md:mb-10 font-bold"
-          >
+          <p class="text-slate-100 text-2xl text-center mb-2 md:mb-4 font-bold">
             EXPENSE <span class="text-[#51d289] ml-1">BOOK</span>
           </p>
+          <p id="error" class="text-center text-red-600 hidden">
+            All feilds are required
+          </p>
+
           <input
             type="text"
             id="name-signup-input"
@@ -41,30 +43,56 @@
             autocomplete="off"
             required
           />
-          <input
-            type="email"
-            id="email-signup-input"
-            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
-            placeholder="you@example.com"
-            autocomplete="off"
-            required
-          />
-          <input
-            type="password"
-            id="pass-signup-input"
-            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
-            placeholder="Password"
-            autocomplete="off"
-            required
-          />
-          <input
-            type="password"
-            id="con-pass-signup-input"
-            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
-            placeholder="Conform Password"
-            autocomplete="off"
-            required
-          />
+          <div class="mr-16 ml-14 overflow-hidden">
+            <input
+              type="email"
+              id="email-signup-input"
+              class="bg-[#2b2b2b] w-full border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+              placeholder="you@example.com"
+              autocomplete="off"
+              required
+            />
+            <p id="email-error" class="text-red-600 hidden flex-row">
+              Invalid Email
+            </p>
+          </div>
+          <div class="mr-14 ml-14 overflow-hidden flex">
+            <input
+              type="password"
+              id="pass-signup-input"
+              class="bg-[#2b2b2b] w-full border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+              placeholder="Password"
+              autocomplete="off"
+              required
+            />
+            <img
+              onclick="eyeclick()"
+              id="eyeicon1"
+              class="relative size-[15px] self-center right-10 cursor-pointer"
+              src="assets/eye-close.png"
+            />
+          </div>
+          <div class="mr-14 ml-14 overflow-hidden">
+            <div class="flex">
+              <input
+                type="password"
+                id="con-pass-signup-input"
+                class="bg-[#2b2b2b] w-full border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+                placeholder="Conform Password"
+                autocomplete="off"
+                required
+              />
+              <img
+                onclick="eyeclick()"
+                id="eyeicon"
+                class="relative size-[15px] self-center right-10 cursor-pointer"
+                src="assets/eye-close.png"
+              />
+            </div>
+            <p id="pass-error" class="text-red-600 hidden flex-row">
+              Password should be same
+            </p>
+          </div>
 
           <button
             id="signup-btn"
@@ -82,11 +110,31 @@
         $signuppassword = document.getElementById("pass-signup-input"),
         $signupconfrimpass = document.getElementById("con-pass-signup-input"),
         $signupbtn = document.getElementById("signup-btn");
+
       let users = [];
       const localstorage = localStorage.getItem("users");
       const abc = localStorage.getItem("users123");
+      const $error = document.getElementById("error");
+      const $passerror = document.getElementById("pass-error");
+      const $eyeicon = document.getElementById("eyeicon");
+      const $eyeicon1 = document.getElementById("eyeicon1");
+      const $emailerror = document.getElementById("email-error");
 
       console.log(abc);
+
+      function eyeclick() {
+        if ($signuppassword.type == "password") {
+          $signuppassword.type = "text";
+          $signupconfrimpass.type = "text";
+          $eyeicon.src = "assets/eye-open.png";
+          $eyeicon1.src = "assets/eye-open.png";
+        } else {
+          $signuppassword.type = "password";
+          $signupconfrimpass.type = "password";
+          $eyeicon.src = "assets/eye-close.png";
+          $eyeicon1.src = "assets/eye-close.png";
+        }
+      }
 
       if (!1) {
         console.log("abc");
@@ -108,17 +156,36 @@
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailRegex.test(email)) {
-          alert("Please enter a valid email address.");
-        } else if (
+        if (
           name === "" ||
           email === "" ||
           password === "" ||
           confirmpass === ""
         ) {
-          alert("All fields must be filled out");
+          $error.classList.replace("hidden", "block");
+        } else if (!emailRegex.test(email)) {
+          $emailerror.classList.replace("hidden", "block");
+          $signupemail.classList.replace("border-gray-300", "border-red-500");
+          if ($error.classList.contains("block")) {
+            $error.classList.replace("block", "hidden");
+          }
         } else if (password !== confirmpass) {
-          alert("Password Should Be Same");
+          $signupconfrimpass.classList.replace(
+            "border-gray-300",
+            "border-red-500"
+          );
+          $signuppassword.classList.replace(
+            "border-gray-300",
+            "border-red-500"
+          );
+          $passerror.classList.replace("hidden", "block");
+          if ($error.classList.contains("block")) {
+            $error.classList.replace("block", "hidden");
+          }
+          if ($emailerror.classList.contains("block")) {
+            $emailerror.classList.replace("block", "hidden");
+            $signupemail.classList.replace("border-red-500", "border-gray-300");
+          }
         } else if (useremail(email)) {
           alert("Email already exists");
         } else {

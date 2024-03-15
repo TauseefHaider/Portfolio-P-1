@@ -596,6 +596,18 @@ video {
   top: 110px;
 }
 
+.right-4 {
+  right: 1rem;
+}
+
+.right-8 {
+  right: 2rem;
+}
+
+.right-10 {
+  right: 2.5rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -683,6 +695,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -759,6 +775,10 @@ video {
   margin-right: 6rem;
 }
 
+.mr-28 {
+  margin-right: 7rem;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -795,6 +815,10 @@ video {
   margin-top: 3rem;
 }
 
+.mt-14 {
+  margin-top: 3.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -827,8 +851,8 @@ video {
   margin-top: 1.5rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
+.mr-16 {
+  margin-right: 4rem;
 }
 
 .block {
@@ -855,6 +879,21 @@ video {
   display: none;
 }
 
+.size-\[35px\] {
+  width: 35px;
+  height: 35px;
+}
+
+.size-\[10px\] {
+  width: 10px;
+  height: 10px;
+}
+
+.size-\[15px\] {
+  width: 15px;
+  height: 15px;
+}
+
 .h-40 {
   height: 10rem;
 }
@@ -871,8 +910,8 @@ video {
   height: 250px;
 }
 
-.h-\[450px\] {
-  height: 450px;
+.h-\[500px\] {
+  height: 500px;
 }
 
 .h-\[550px\] {
@@ -901,10 +940,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[500px\] {
-  height: 500px;
 }
 
 .w-10 {
@@ -977,6 +1012,14 @@ video {
 
 .w-lvw {
   width: 100lvw;
+}
+
+.w-\[35px\] {
+  width: 35px;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .table-auto {
@@ -1222,6 +1265,16 @@ video {
 .border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-slate-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
 }
 
 .border-slate-400 {
@@ -1610,6 +1663,16 @@ video {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .text-slate-100 {
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
@@ -1737,6 +1800,10 @@ video {
     margin-bottom: 2.5rem;
   }
 
+  .md\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
   .md\:ml-\[100px\] {
     margin-left: 100px;
   }
@@ -1797,10 +1864,6 @@ video {
     flex-direction: column;
   }
 
-  .md\:gap-2 {
-    gap: 0.5rem;
-  }
-
   .md\:rounded-none {
     border-radius: 0px;
   }
@@ -1848,10 +1911,6 @@ video {
 
   .lg\:flex-row {
     flex-direction: row;
-  }
-
-  .lg\:gap-10 {
-    gap: 2.5rem;
   }
 
   .lg\:px-20 {

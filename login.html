@@ -37,18 +37,31 @@
           <input
             type="email"
             id="email-login-input"
-            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+            class="bg-[#2b2b2b] mr-16 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
             placeholder="you@example.com"
             autocomplete="off"
             required
           />
-          <input
-            type="password"
-            id="pass-login-input"
-            class="bg-[#2b2b2b] mr-14 ml-14 border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
-            placeholder="Password"
-            required
-          />
+          <div class="mr-14 ml-14 overflow-hidden">
+            <div class="flex">
+              <input
+                type="password"
+                id="pass-login-input"
+                class="bg-[#2b2b2b] w-full border-b-2 border-gray-300 text-slate-100 p-2.5 focus:border-b-2 focus:outline-none text-center"
+                placeholder="Password"
+                required
+              />
+              <img
+                onclick="eyeclick()"
+                id="eyeicon"
+                class="relative size-[15px] self-center right-10 cursor-pointer"
+                src="assets/eye-close.png"
+              />
+            </div>
+            <p id="invalid" class="text-red-600 hidden flex-row">
+              Invalid Credentials
+            </p>
+          </div>
 
           <button
             id="login-btn"
@@ -65,11 +78,25 @@
       const $loginPass = document.getElementById("pass-login-input");
       const $loginBtn = document.getElementById("login-btn");
       let users = [];
+      const $invalid = document.getElementById("invalid");
+      const $eyeicon = document.getElementById("eyeicon");
 
       const localstorage = localStorage.getItem("users");
 
       if (localstorage) {
         users = JSON.parse(localstorage);
+      }
+
+      function eyeclick() {
+        if ($loginPass.type == "password") {
+          $loginPass.type = "text";
+
+          $eyeicon.src = "assets/eye-open.png";
+        } else {
+          $loginPass.type = "password";
+
+          $eyeicon.src = "assets/eye-close.png";
+        }
       }
 
       function useremail(email) {
@@ -90,10 +117,14 @@
             localStorage.setItem("activeuser", email);
             location.replace("./home.html");
           } else {
-            alert("Invalid Credentials");
+            $invalid.classList.replace("hidden", "block");
+            $loginEmail.classList.replace("border-gray-300", "border-red-500");
+            $loginPass.classList.replace("border-gray-300", "border-red-500");
           }
         } else {
-          alert("Invalid Credentials");
+          $invalid.classList.replace("hidden", "block");
+          $loginEmail.classList.replace("border-gray-300", "border-red-500");
+          $loginPass.classList.replace("border-gray-300", "border-red-500");
         }
       }
 
